@@ -2,13 +2,14 @@
 <% @items.each do |item| %>
   <tr>商品ID</tr>
   <%= item.id %>
-  
+
   <tr>商品名</tr>
-  <%= item.name %>
-  
+  <%= link_to item.name, admin_item_path(item.id) %>
+
   <tr>税抜価格</tr>
   <%= item.price %>
-  
+
   <tr>ジャンル</tr>
   <%= item.genre.name %>
-<% end %>  
+<% end %>
+<%= paginate @items %>

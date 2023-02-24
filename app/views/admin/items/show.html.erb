@@ -1,0 +1,30 @@
+<h1>商品詳細</h1>
+
+<% if @item.image.attached? %>
+  <%= image_tag @item.image, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+
+<label>商品名</label>
+<%= @item.name %>
+<label>商品説明</label>
+<%= @item.introduction %>
+<label>ジャンル</label>
+<%= @item.genre.name %>
+<label>税込価格<br>(税抜価格)</label>
+<%= @item.price %>
+
+<%= form_with model: @item, url: admin_items_path do |f| %>
+<%= f.radio_button :is_active, "true" %>
+<%= f.label :is_active, "販売中", value: true %>
+
+<%= f.radio_button :is_active, "false" %>
+<%= f.label :is_active, "販売休止", value: false %>
+
+<%= f.submit "新規登録" %>
+
+<%= link_to "編集する", edit_admin_item_path(@item.id) %>
+<% end %>
+
+
