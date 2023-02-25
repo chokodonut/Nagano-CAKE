@@ -1,0 +1,15 @@
+<h1>会員一覧</h1>
+<% @customers each do |customers| %>
+<label>会員ID</label>
+<%= customer.id %>
+
+<label>氏名</label>
+<%= customer.last_name %>
+<%= customer.first_name %>
+
+<label>メールアドレス</label>
+<%= customer.email %>
+
+<label>ステータス</label>
+
+<% end %>

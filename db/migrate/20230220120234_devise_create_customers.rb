@@ -8,13 +8,13 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :first_name, null: false
       t.string :last_name_kana, null: false
       t.string :first_name_kana, null: false
-      t.string :postla_code, null: false
+      t.string :postal_code, null: false
       t.string :address, null: false
       t.string :telephone_number, null: false
-      t.boolean :is_deleted, null: false
+      t.boolean :is_deleted, null: false, default: false
       # t.datetime :created_at
       # t.datetime :updated_at
-      
+
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -51,7 +51,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     add_index :customers, :reset_password_token, unique: true
     # add_index :customers, :confirmation_token,   unique: true
     # add_index :customers, :unlock_token,         unique: true
-    
-    
+
+
   end
 end
