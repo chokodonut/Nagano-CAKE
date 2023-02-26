@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :index, :edit, :update]
   end
 
-  get '/customers/my_page' => 'customers#show', as: 'customers_my_page'
-  get '/customers/information/edit' => 'customers#edit'
-  patch '/customers/information' => 'customers#update'
-  get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
-  patch '/customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
+  get '/customers/my_page' => 'public/customers#show', as: 'my_page'
+  get '/customers/information/edit' => 'public/customers#edit'
+  patch '/customers/information' => 'public/customers#update'
+  get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
+  patch '/customers/withdrawal' => 'public/customers#withdrawal', as: 'withdrawal'
 
 end

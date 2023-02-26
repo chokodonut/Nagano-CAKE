@@ -1,15 +1,19 @@
 <h1>会員一覧</h1>
-<% @customers each do |customers| %>
+<% @customer.each do |customer| %>
 <label>会員ID</label>
 <%= customer.id %>
 
 <label>氏名</label>
-<%= customer.last_name %>
-<%= customer.first_name %>
+<%= link_to customer.last_name, admin_customer_path(customer.id) %>
+<%= link_to customer.first_name, admin_customer_path(customer.id) %>
 
 <label>メールアドレス</label>
 <%= customer.email %>
 
 <label>ステータス</label>
-
+<% if customer.is_deleted == false %>
+  <label>有効</label>
+  <% else %>
+  <label>退会</label>
+  <% end %>
 <% end %>
