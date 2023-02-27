@@ -11,7 +11,20 @@
   </head>
 
   <body>
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    <h1>test</h1>
+    <% if  request.referer&.include?('/admin') %>
+      <% if admin_signed_in? %>
+      <%# url:/admin 管理者ログイン時  %>
+        <%= render '/layouts/admin_header' %>
+      <% else %>
+      <%# url:/admin 管理者ログアウト時  %>
+        <%= render '/layouts/customer_header' %>
+      <% end %>
+    <% else %>
+    <%# url:/ %>
+       <%= render '/layouts/customer_header' %>
+    <% end %>
+
   </body>
 </html>
     <%= yield %>

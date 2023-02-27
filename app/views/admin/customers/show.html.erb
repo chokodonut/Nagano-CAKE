@@ -1,32 +1,49 @@
+<%= @customer.last_name %>
+<%= @customer.first_name %>
+<label>さんの会員情報</label>
 
-  <%= @customer.last_name %>
-  <%= @customer.first_name %>
-  <label>さんの会員情報</label>
+<table>
+  <tr>
+    <th>会員ID</th>
+      <td><%= @customer.id %></td>
+  </tr>
+  <tr>
+    <th>氏名</th>
+      <td>
+        <%= @customer.last_name %>
+        <%= @customer.first_name %>
+      </td>
+  </tr>
+    <tr>
+      <th>フリガナ</th>
+        <td>
+          <%= @customer.last_name_kana %>
+          <%= @customer.first_name_kana %>
+        </td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+        <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+        <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <th>会員ステータス</th>
+        <td>
+          <% if @customer.is_deleted == false %>
+            <label>有効</label>
+          <% else %>
+            <label>退会</label>
+          <% end %>
+        </td>
+    </tr>
+</table>
 
-  <label>会員ID</label>
-  <%= @customer.id %>
 
-  <label>氏名</label>
-  <%= @customer.last_name %>
-  <%= @customer.first_name %>
-
-  <label>フリガナ</label>
-  <%= @customer.last_name %>
-  <%= @customer.first_name %>
-
-  <label>郵便番号</label>
-  <%= @customer.postal_code %>
-
-  <label>住所</label>
-  <%= @customer.address %>
-
-  <label>メールアドレス</label>
-  <%= @customer.email %>
-
-  <label>会員ステータス</label>
-  <% if @customer.is_deleted == false %>
-  <label>有効</label>
-  <% else %>
-  <label>退会</label>
-  <% end %>
   <%= link_to "編集する", edit_admin_customer_path %>

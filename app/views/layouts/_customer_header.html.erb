@@ -1,0 +1,7 @@
+<% if customer_signed_in? %>
+<%# ログイン時ヘッダー表示 %>
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+<% else %>
+  <%# ログアウト時ヘッダー表示 %>
+  <p>customer</p>
+<% end %>
