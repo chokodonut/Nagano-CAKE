@@ -1,6 +1,9 @@
-class Public::ItemsController < ApplicationController
-  def index
-    @items = Item.find(params[:id])
+class Public::HomesController < ApplicationController
+  def top
+    @item = Item.find(item_params)
+  end
+
+  def about
   end
 
   private

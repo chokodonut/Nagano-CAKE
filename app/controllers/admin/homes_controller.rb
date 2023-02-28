@@ -4,6 +4,9 @@ class Admin::HomesController < ApplicationController
     # @customer = Customer.find(params[:id])
   end
 
+  def about
+  end
+  
   private
 
   def order_params

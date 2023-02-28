@@ -1,7 +1,14 @@
 <% if customer_signed_in? %>
+  <%= link_to "マイページ", my_page_path %>
+  <%= link_to "商品一覧", root_path %>
+  <%= link_to "カート", cart_items_path %>
 <%# ログイン時ヘッダー表示 %>
   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
 <% else %>
-  <%# ログアウト時ヘッダー表示 %>
+  <%= link_to "About", about_path %>
+  <%= link_to "商品一覧", root_path %>
+  <%= link_to "新規登録", new_customer_registration_path %>
+  <%= link_to "ログイン", customer_session_path %>
+  
   <p>customer</p>
 <% end %>

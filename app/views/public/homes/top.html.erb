@@ -1,0 +1,15 @@
+<h1>ようこそ、ながのケーキへ！</h1>
+  <p>このサイトは、ケーキ販売のＥＣサイトになります。<br>
+  会員でない方も商品の閲覧はできますが、<br>
+  購入には会員登録が必要になります。</p>
+
+<h1>新着商品</h1>
+<% @items.each do |item| %>
+<% if @item.image.attached? %>
+  <%= image_tag @item.image, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+  <%= item.name %>
+  <%= item.price %>
+<% end %>
