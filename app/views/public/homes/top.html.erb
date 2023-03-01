@@ -4,9 +4,9 @@
   購入には会員登録が必要になります。</p>
 
 <h1>新着商品</h1>
-<% @items.each do |item| %>
-<% if @item.image.attached? %>
-  <%= image_tag @item.image, size: "200x200" %>
+<% @item.each do |item| %>
+<% if item.image.attached? %>
+  <%= image_tag item.image, size: "200x200" %>
 <% else %>
   <%= image_tag 'no_image', size: "200x200" %>
 <% end %>
