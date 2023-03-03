@@ -5,26 +5,35 @@
 <% else %>
   <%= image_tag 'no_image', size: "200x200" %>
 <% end %>
+<table>
+  <tr>
+    <th>商品名</th>
+      <td><%= @item.name %></td>
+  </tr>
+  <tr>
+    <th>商品説明</th>
+      <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+      <td><%= @item.genre.name %></td>
+  </tr>
+  <tr>
+    <th>税込価格<br>(税抜価格)</th>
+      <td><%= @item.price %></td>
+  </tr>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <tr>
+    <th>販売ステータス</th>
+      <td>
+        <% if @item.is_active == false %>
+        <label>販売停止中</label>
+        <% else %>
+        <label>販売中</label>
+        <% end %>
+      </td>
+  </tr>
+</table>
 
-<label>商品名</label>
-<%= @item.name %>
-<label>商品説明</label>
-<%= @item.introduction %>
-<label>ジャンル</label>
-<%= @item.genre.name %>
-<label>税込価格<br>(税抜価格)</label>
-<%= @item.price %>
-
-<%= form_with model: @item, url: admin_items_path do |f| %>
-<%= f.radio_button :is_active, "true" %>
-<%= f.label :is_active, "販売中", value: true %>
-
-<%= f.radio_button :is_active, "false" %>
-<%= f.label :is_active, "販売休止", value: false %>
-
-<%= f.submit "新規登録" %>
-
-<%= link_to "編集する", edit_admin_item_path(@item.id) %>
+<%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-sm" %>
 <% end %>
-
-
