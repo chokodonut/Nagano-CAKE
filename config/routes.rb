@@ -37,5 +37,7 @@ Rails.application.routes.draw do
   get '/orders' => 'orders#index'
   get '/orders/:id' => 'orders#show'
 
+  scope module: :public do
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+  end
 end

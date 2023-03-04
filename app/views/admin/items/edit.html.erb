@@ -1,26 +1,58 @@
 <h1>商品編集</h1>
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-  <label>画像</label>
-  <%= f.file_field :image, accept: "image/*" %>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">画像</label>
+        <div>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">商品名</label>
+        <div class="col-sm-10">
+          <div>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">商品説明文</label>
+        <div class="col-sm-10">
+          <div>
+            <%= f.text_area :introduction, class: "form-control" %>
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">ジャンル</label>
+      <div class="col-sm-10">
+        <div>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "dropdown" %>
+        </div>
+      </div>
+    </div>  
+    <div class="form-group">
+      <label class="col-sm-2 control-label">税抜価格</label>
+        <div class="col-sm-10">
+          <div>
+             <%= f.text_field :price, class: "form-control" %>
+          </div>
+        </div>
+    </div>  
+    <div class="form-group">
+      <label class="col-sm-2 control-label">販売ステータス</label>
+        <div class="col-sm-10 radio">
+          <div>
+            <%= f.radio_button :is_active, "true" %>
+            <%= f.label :is_active, "販売中", value: true %>
 
-  <label>商品名</label>
-  <%= f.text_field :name %>
-
-  <label>商品説明文</label>
-  <%= f.text_area :introduction %>
-
-  <label>ジャンル</label>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-
-  <label>税抜価格</label>
-  <%= f.text_field :price %>
-
-  <label>販売ステータス</label>
-  <%= f.radio_button :is_active, "true" %>
-  <%= f.label :is_active, "販売中", value: true %>
-
-  <%= f.radio_button :is_active, "false" %>
-  <%= f.label :is_active, "販売休止", value: false %>
-
-  <%= f.submit "変更を保存" %>
+            <%= f.radio_button :is_active, "false" %>
+            <%= f.label :is_active, "販売休止", value: false %>
+          </div>
+        </div>
+      </div>
+    <div>
+      <%= f.submit "変更を保存", class: "btn btn-success btn-sm" %>
+    </div>
+  </form>
 <% end %>
