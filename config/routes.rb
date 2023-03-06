@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   get '/items' => 'public/items#index'
-  get '/items/:id' => 'public/items#show'
+  get '/items/:id' => 'public/items#show', as: 'item'
 
   get '/cart_items' => 'cart_items#index'
   patch '/cart_items/:id' => 'cart_items#update'

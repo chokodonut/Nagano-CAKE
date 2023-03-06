@@ -2,7 +2,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-2">
+      <label>ジャンル検索</label>
+      <% @genre.each do |genre| %>
+      <%= genre.name %>
+      <% end %>
+    </div>
     <div class="col-md-10">
       <h1>商品一覧</h1>
       <div class="container">
@@ -10,39 +15,20 @@
           <% @items.each do |item| %>
           <div class="col-md-3", style="margin-rigth: 2px; margin-bottom: 2px;">
             <div class="card-img-top">
-            <%= image_tag item.item_image(200,200) %>
-            <div class="card-body">
-              <div class="card-text">
-                <%= item.name %>
-              </div>
-              <div class="card-text">
-                <%= item.price %>
-              </div>
+              <%= link_to item_path(item.id) do %>
+              <%= image_tag item.item_image(200,200) %>
+              <% end %>
+                <div class="card-body">
+                  <div class="card-text">
+                    <%= item.name %>
+                  </div>
+                  <div class="card-text">
+                    <%= item.price %>
+                  </div>
+                </div>
             </div>
           </div>
-          </div>
-
           <% end %>
-        </div>
-      </div>
-
-      <div class="card-deck">
-        <div class="card">
-          <div class="card-img-top">
-            <%# if item.image.attached? %>
-              <%#= image_tag item.image, size: "200x200" %>
-            <%# else %>
-              <%#= image_tag 'no_image', size: "200x200" %>
-            <%# end %>
-            <div class="card-body">
-              <div class="card-text">
-                <%#= item.name %>
-              </div>
-              <div class="card-text">
-                <%#= item.price %>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

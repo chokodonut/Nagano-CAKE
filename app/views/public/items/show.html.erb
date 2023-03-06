@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <% @genre.each do |genre| %>
+      <%= genre.name %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag @item.item_image(250,250) %>
+    </div>
+    <div class="col-md-5">
+      <%= @item.name %>
+      <%= @item.introduction %>
+      <%= @item.price %>
+      <%#= form_with %>
+    </div>
+  </div>
+</div>
