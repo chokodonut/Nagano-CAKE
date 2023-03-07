@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   get '/items' => 'public/items#index'
   get '/items/:id' => 'public/items#show', as: 'item'
 
-  get '/cart_items' => 'cart_items#index'
-  patch '/cart_items/:id' => 'cart_items#update'
-  post '/cart_items' => 'cart_items#create'
+  get '/cart_items' => 'public/cart_items#index'
+  patch '/cart_items/:id' => 'public/cart_items#update'
+  post '/cart_items' => 'public/cart_items#create'
 
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'
   get '/customers/information/edit' => 'public/customers#edit'
@@ -30,12 +30,12 @@ Rails.application.routes.draw do
   get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch '/customers/withdrawal' => 'public/customers#withdrawal', as: 'withdrawal'
 
-  get '/orders/new' => 'orders#new'
-  post '/orders' => 'orders#create'
-  post '/orders/confirm' => 'orders#confirm'
-  get '/orders/complete' => 'orders#complete'
-  get '/orders' => 'orders#index'
-  get '/orders/:id' => 'orders#show'
+  get '/orders/new' => 'public/orders#new'
+  post '/orders' => 'public/orders#create'
+  post '/orders/confirm' => 'public/orders#confirm'
+  get '/orders/complete' => 'public/orders#complete'
+  get '/orders' => 'public/orders#index'
+  get '/orders/:id' => 'public/orders#show'
 
   scope module: :public do
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]

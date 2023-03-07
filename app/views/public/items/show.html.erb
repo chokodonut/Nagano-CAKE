@@ -12,7 +12,11 @@
       <%= @item.name %>
       <%= @item.introduction %>
       <%= @item.price %>
-      <%#= form_with %>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f|%>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.select :amount, *[1..5] %>
+      <%= f.submit 'カートに入れる' %>
+      <% end %>
     </div>
   </div>
 </div>
