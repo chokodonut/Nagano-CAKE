@@ -1,3 +1,6 @@
+<div>
+  <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
+</div>
 <% @cart_items.each do |cart_item| %>
 <div class="container">
   <div class="row">
@@ -14,12 +17,19 @@
           <td>
             <%= cart_item.item.name %>
           </td>
-          <td></td>
+
+          <td><%= cart_item.item.with_tax_price %></td>
+
           <td>
             <%= cart_item.amount %>
           </td>
-          <td></td>
-          <td></td>
+          <td><%= cart_item.subtotal %></td>
+              <% @total += cart_item.subtotal %></td>
+          <td>
+            <div>
+              <%= link_to '削除する', cart_items_path(cart_item.id), method: :delete, "data-confirm" => "削除しますか？", class: 'btn btn-danger' %>
+            </div>
+          </td>
         </tr>
       </table>
     </div>

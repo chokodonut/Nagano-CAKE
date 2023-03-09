@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   get '/items' => 'public/items#index'
   get '/items/:id' => 'public/items#show', as: 'item'
 
+  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
   get '/cart_items' => 'public/cart_items#index'
   patch '/cart_items/:id' => 'public/cart_items#update'
   post '/cart_items' => 'public/cart_items#create'
+  delete '/cart_items/:id' => 'public/cart_items#destroy'
 
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'
   get '/customers/information/edit' => 'public/customers#edit'
