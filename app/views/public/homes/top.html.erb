@@ -1,15 +1,49 @@
-<h1>ようこそ、ながのケーキへ！</h1>
-  <p>このサイトは、ケーキ販売のＥＣサイトになります。<br>
-  会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <% @genre.each do |genre| %>
+      <div class="border border-1">
+        <%= genre.name %>
+      </div>
+      <% end %>
+    </div>
 
-<h1>新着商品</h1>
-<% @item.each do |item| %>
-<% if item.image.attached? %>
-  <%= image_tag item.image, size: "200x200" %>
-<% else %>
-  <%= image_tag 'no_image', size: "200x200" %>
-<% end %>
-  <%= item.name %>
-  <%= item.price %>
-<% end %>
+    <div class="col-md-10">
+      <h1>ようこそ、ながのケーキへ！</h1>
+        <p>このサイトは、ケーキ販売のＥＣサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。</p>
+    </div>
+
+      <h1>新着商品</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3", style="margin-rigth: 2px; margin-bottom: 2px;">
+              <% @item.each do |item| %>
+            <!--<div class="column flex-direction:row">-->
+            <!--  <div class=”card-deck“>-->
+                <!--<div class="card">-->
+                  <div class="card-img-top">
+                  <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.item_image(200,150) %>
+                  <% end %>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-title">
+                      <%= item.name %>
+                    </div>
+                    <div class="card-text">
+                      ¥<%= item.price %>
+                    </div>
+                  </div>
+                <% end %>
+                <!--</div>-->
+            <!--  </div>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+  </div>
+    <%= link_to "全ての商品を見る", items_path %>
+</div>
+

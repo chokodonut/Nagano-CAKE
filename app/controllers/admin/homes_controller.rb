@@ -6,7 +6,7 @@ class Admin::HomesController < ApplicationController
 
   def about
   end
-  
+
   private
 
   def order_params
