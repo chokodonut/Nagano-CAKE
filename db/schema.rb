@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2023_02_22_125404) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|Public::OrdersController
     t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false

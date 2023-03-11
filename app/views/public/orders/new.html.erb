@@ -1,0 +1,19 @@
+<h1>注文情報入力</h1>
+<div class="container">
+  <div class="row">
+    <%= form_with model: @order, url: orders_new_path do |f| %>
+    <p>
+      支払方法
+    </p>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+    <p>
+      配送先選択
+    </p>
+    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    <% end %>
+  </div>
+</div>

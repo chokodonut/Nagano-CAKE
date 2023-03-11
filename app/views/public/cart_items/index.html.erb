@@ -21,13 +21,17 @@
           <td><%= cart_item.item.with_tax_price %></td>
 
           <td>
+            <%= form_with model: cart_item, url: cart_item_update_path(cart_item.id), method: :patch do |f| %>
             <%= cart_item.amount %>
+            <%= f.select :amount, *[1..9] %>
+            <%= f.submit '更新' %>
+            <% end %>
           </td>
           <td><%= cart_item.subtotal %></td>
-              <% @total += cart_item.subtotal %></td>
+          <%# @total += cart_item.subtotal %>
           <td>
             <div>
-              <%= link_to '削除する', cart_items_path(cart_item.id), method: :delete, "data-confirm" => "削除しますか？", class: 'btn btn-danger' %>
+              <%= link_to '削除する', cart_item_destroy_path(cart_item.id), method: :delete, "data-confirm" => "削除しますか？", class: 'btn btn-danger' %>
             </div>
           </td>
         </tr>
@@ -36,3 +40,24 @@
   </div>
 </div>
 <% end %>
+<div class="row">
+  <div class="col-md-8 offset-4">
+    <div class="table">
+      <tr>
+        <th>
+          合計金額
+        </th>
+        <td>
+          <%= @total %>円
+        </td>
+      </tr>
+    <%# end %>
+    </div>
+  </div>
+</div>
+<div>
+  <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+</div>
+<div>
+  <%= link_to '情報入力に進む', orders_new_path, class: "btn btn-success" %>
+</div>
