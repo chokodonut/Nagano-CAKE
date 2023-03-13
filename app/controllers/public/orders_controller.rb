@@ -43,9 +43,9 @@ class Public::OrdersController < ApplicationController
         #@order.address = current_customer.address
     elsif params[:order][:address_number] == "2"
 
-          @order.name = Address.find_by(current_customer.address_display)
-          @order.address = Address.find_by(address_id: current_customer.address)
-          @order.postal_code = Address.find_by(address_id: current_customer.postal_code)
+          @order.name = Address.find_by(customer_id: current_customer.full_name)
+          @order.address = Address.find_by(customer_id: current_customer.address)
+          @order.postal_code = Address.find_by(customer_id: current_customer.postal_code)
           #render :new
 
     elsif params[:order][:address_number] == "3"
