@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
           @order_detail.making_status = 0
           @order_detail.save
         end
-    redirect_to orders_confirm_path
+    redirect_to orders_complete_path
     else
     @order = Order.new(order_params)
     render :new
@@ -38,24 +38,25 @@ class Public::OrdersController < ApplicationController
     #confirmにヒデンフィールドのバリューでそのインスタンス変数をいれてcreateアクションへいく
 
     if  params[:order][:address_number] == "1"
-        @order.name = current_customer.address_display
-        #@order.postal_code = current_customer.postal_code
-        #@order.address = current_customer.address
-    elsif params[:order][:address_number] == "2"
+        @order.name = current_customer.full_name
+        @order.postal_code = current_customer.postal_code
+        @order.address = current_customer.address
 
-          @order.name = Address.find_by(customer_id: current_customer.full_name)
-          @order.address = Address.find_by(customer_id: current_customer.address)
-          @order.postal_code = Address.find_by(customer_id: current_customer.postal_code)
-          #render :new
+    elsif params[:order][:address_number] == "2"
+          @address = Address.find(params[:order][:address_id])
+          @order.name = @address.name
+          @order.address = @address.address
+          @order.postal_code = @address.postal_code
 
     elsif params[:order][:address_number] == "3"
-          @address_new = current_customer.addresses.new(address_params)
-          if address_new.save
-          else
-            render :new
-          end
+          @order.name = @order.name
+          @order.address = @order.address
+          @order.postal_code = @order.postal_code
+
     end
-    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
+    @cost = "800"
+    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal + @cost.to_i }
+    @subtotal = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
   end
 
   def complete
