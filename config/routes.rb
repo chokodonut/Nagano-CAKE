@@ -37,8 +37,8 @@ Rails.application.routes.draw do
   post '/orders' => 'public/orders#create'
   post '/orders/confirm' => 'public/orders#confirm'
   get '/orders/complete' => 'public/orders#complete'
-  get '/orders' => 'public/orders#index'
-  get '/orders/:id' => 'public/orders#show'
+  get '/orders' => 'public/orders#index', as: 'orders_index'
+  get '/orders/:id' => 'public/orders#show', as: 'order_show'
 
   scope module: :public do
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]

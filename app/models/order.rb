@@ -8,8 +8,6 @@ class Order < ApplicationRecord
       (price * 1.1).floor
   end
 
-  # def subtotal
-  #   item.with_tax_price * amount
-  # end
+  
 
 end

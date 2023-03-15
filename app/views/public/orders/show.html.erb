@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>注文情報</h3>
+      <table class="table">
+        <%# @order.each do |order| %>
+        <tr>
+          <th>注文日</th>
+          <td><%= @orders.created_at %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @orders.postal_code%>
+           <%= @orders.address %>
+           <%= @orders.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @orders.payment_method %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-3 offset-1">
+      <h3>請求情報</h3>
+      <table class="table">
+        <tr>
+          <th>商品合計</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>配送料</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>ご請求額</th>
+          <td></td>
+        </tr>
+      </table>
+      <%# end %>
+    </div>
+  </div>
+</div>

@@ -17,12 +17,14 @@
     <%= f.label :address_number_1, "ご自身の住所" %>
     <%= current_customer.address_display %>
 
-    <%= f.radio_button :address_number, 2 %>
-    <%= f.label :address_number_2, "登録先の住所" %>
-    <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %>
+    <p><%= f.radio_button :address_number, 2 %>
+      <%= f.label :address_number_2, "登録先の住所" %>
+    </p>
+      <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %>
 
-    <%= f.radio_button :address_number, 3 %>
-    <%= f.label :address_number_3, "新しいお届け先" %>
+    <p><%= f.radio_button :address_number, 3 %>
+      <%= f.label :address_number_3, "新しいお届け先" %>
+    </p>
 
     <%= f.label :address, "住所", class: "form-label" %>
     <%= f.text_area :address, class: "form-control" %>
