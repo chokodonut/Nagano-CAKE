@@ -32,6 +32,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @orders = current_customer.orders.find(params[:id])
+
   end
 
   def confirm
@@ -59,8 +60,11 @@ class Public::OrdersController < ApplicationController
 
     end
     @cost = "800"
-    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal + @cost.to_i }
+    # @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal + @cost.to_i }
+
     @subtotal = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
+    @total = @cost.to_i + @subtotal
+
   end
 
   def complete

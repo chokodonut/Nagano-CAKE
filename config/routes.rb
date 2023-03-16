@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:show, :index, :edit, :update]
+    get 'admin/orders/:id' => 'orders#show', as: 'admin_order'
   end
 
   root to: 'public/homes#top'
