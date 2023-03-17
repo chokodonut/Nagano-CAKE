@@ -4,7 +4,7 @@
     <table class="table">
       <tr>
         <th>購入者</th>
-        <td><%= @order.name %></td>
+        <td><%= link_to @order.name, admin_admin_order_path(@order.id) %></td>
       </tr>
       <tr>
         <th>注文日</th>
