@@ -1,7 +1,7 @@
 <div>
   <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
 </div>
-<% @cart_items.each do |cart_item| %>
+
 <div class="container">
   <div class="row">
     <div class="col-md-8">
@@ -13,21 +13,25 @@
           <th>小計</th>
           <th></th>
         </tr>
+        <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
             <%= cart_item.item.name %>
           </td>
-
-          <td><%= cart_item.item.with_tax_price %></td>
-
+          <td>
+            <%= cart_item.item.with_tax_price %>円
+          </td>
           <td>
             <%= form_with model: cart_item, url: cart_item_update_path(cart_item.id), method: :patch do |f| %>
+            <%#= f.hidden_field :item_id, value: cart_item.item_id %>
             <%= cart_item.amount %>
             <%= f.select :amount, *[1..9] %>
-            <%= f.submit '更新' %>
+            <%= f.submit '変更', class: 'btn btn-success' %>
             <% end %>
           </td>
-          <td><%= cart_item.subtotal %></td>
+          <td>
+            <%= cart_item.subtotal %>円
+          </td>
           <%# @total += cart_item.subtotal %>
           <td>
             <div>
@@ -35,17 +39,18 @@
             </div>
           </td>
         </tr>
+        <% end %>
       </table>
     </div>
   </div>
 </div>
-<% end %>
+
 <div class="row">
-  <div class="col-md-8 offset-4">
+  <div class="col-md-8 offset-5">
     <div class="table">
       <tr>
         <th>
-          合計金額
+          <strong>合計金額</strong>
         </th>
         <td>
           <%= @total %>円
@@ -55,9 +60,11 @@
     </div>
   </div>
 </div>
-<div>
-  <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
-</div>
-<div>
-  <%= link_to '情報入力に進む', orders_new_path, class: "btn btn-success" %>
+<div class="row">
+  <div class="col-4">
+    <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-4 offset-2">
+    <%= link_to '情報入力に進む', orders_new_path, class: "btn btn-success" %>
+  </div>
 </div>

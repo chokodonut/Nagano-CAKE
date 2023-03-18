@@ -26,15 +26,15 @@
       <table class="table">
         <tr>
           <th>商品合計</th>
-          <td><%= @orders.total_payment - @orders.shipping_cost %></td>
+          <td><%= @orders.total_payment - @orders.shipping_cost %>円</td>
         </tr>
         <tr>
           <th>配送料</th>
-          <td><%= @orders.shipping_cost %></td>
+          <td><%= @orders.shipping_cost %>円</td>
         </tr>
         <tr>
           <th>ご請求額</th>
-          <td><%= @orders.total_payment %></td>
+          <td><%= @orders.total_payment %>円</td>
         </tr>
       </table>
     </div>
@@ -52,10 +52,10 @@
       <% @orders.order_details.each do |order_detail| %>
       </tr>
         <td><%= order_detail.item.name %></td>
-        <td><%= order_detail.item.with_tax_price %></td>
-        <td><%= order_detail.amount %></td>
+        <td><%= order_detail.item.with_tax_price %>円</td>
+        <td><%= order_detail.amount %>個</td>
         <% subtotal=order_detail.item.with_tax_price * order_detail.amount %>
-        <td><%= subtotal %></td>
+        <td><%= subtotal %>円</td>
       <% end %>
     </table>
   </div>

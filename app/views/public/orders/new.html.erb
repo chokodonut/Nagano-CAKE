@@ -1,11 +1,19 @@
 <h1>注文情報入力</h1>
 <div class="container">
   <div class="row">
+    <% if @order.errors.any? %>
+      <%= @order.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <%= form_with model: @order, url: orders_confirm_path do |f| %>
     <p>
       支払方法
     </p>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
     <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
 
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
@@ -13,7 +21,7 @@
     <p>
       お届け先
     </p>
-    <%= f.radio_button :address_number, 1 %>
+    <%= f.radio_button :address_number, 1, checked: true %>
     <%= f.label :address_number_1, "ご自身の住所" %>
     <%= current_customer.address_display %>
 
