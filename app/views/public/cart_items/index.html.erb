@@ -65,6 +65,8 @@
     <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
   </div>
   <div class="col-4 offset-2">
+    <% if @cart_items.any? %>
     <%= link_to '情報入力に進む', orders_new_path, class: "btn btn-success" %>
+    <% end %>
   </div>
 </div>

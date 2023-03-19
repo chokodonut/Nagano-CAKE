@@ -5,6 +5,7 @@ class Public::CartItemsController < ApplicationController
     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
     #@total = 0
     @order = Order.new
+    
   end
 
   def update
