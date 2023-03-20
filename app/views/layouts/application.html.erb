@@ -18,7 +18,7 @@
           <%= link_to root_path, class: "navbar-brand" do %>
             <span>Nagano CAKE</span>
           <% end %>
-          <% if  request.referer&.include?('/admin') %>
+          <% if request.referer&.include?('/admin') %>
             <% if admin_signed_in? %>
             <%# url:/admin 管理者ログイン時  %>
               <%= render '/layouts/admin_header' %>
