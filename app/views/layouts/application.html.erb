@@ -18,17 +18,20 @@
           <%= link_to root_path, class: "navbar-brand" do %>
             <span>Nagano CAKE</span>
           <% end %>
-          <% if request.referer&.include?('/admin') %>
+
             <% if admin_signed_in? %>
             <%# url:/admin 管理者ログイン時  %>
               <%= render '/layouts/admin_header' %>
-            <% else %>
+            <% elsif customer_signed_in? %>
             <%# url:/admin 管理者ログアウト時  %>
               <%= render '/layouts/customer_header' %>
-            <% end %>
+
           <% else %>
           <%# url:/ %>
-             <%= render '/layouts/customer_header' %>
+              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+              <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
+              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+              <%= link_to "ログイン", customer_session_path, class: 'nav-link text-dark' %>
           <% end %>
         </div>
       </nav>
