@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :customer_state, only: [:create]
+  #before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
     my_page_path
@@ -36,12 +36,13 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
-  def customer_state
-  @customer = Customer.find_by(email: params[:customer][:email])
-  return if !@customer
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
-      flash[:error] = "退会済みです。"
-      redirect_to new_customer_registration_path
-    end
-  end
+  # def customer_state
+  # @customer = Customer.find_by(email: params[:customer][:email])
+  # return if !@customer
+  #   if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+  #     #reset_session
+  #     flash[:error] = "退会済みです。"
+  #     redirect_to new_customer_registration_path
+  #   end
+  # end
 end
