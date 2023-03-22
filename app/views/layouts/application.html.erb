@@ -20,10 +20,10 @@
           <% end %>
 
             <% if admin_signed_in? %>
-            <%# url:/admin 管理者ログイン時  %>
+            
               <%= render '/layouts/admin_header' %>
             <% elsif customer_signed_in? %>
-            <%# url:/admin 管理者ログアウト時  %>
+            
               <%= render '/layouts/customer_header' %>
 
           <% else %>
